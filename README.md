@@ -1,6 +1,6 @@
 # 🚦 go-lb
 
-The simplest Load Balancer written in Golang ever created. 
+The simplest load balancer ever written in Golang. 
 
 > Based on the example found [here](https://github.com/kasvith/simplelb).
 
