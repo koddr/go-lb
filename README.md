@@ -1,4 +1,4 @@
-# 🚢 go-lb
+# 🚦 go-lb
 
 The simplest Load Balancer ever created.
 
