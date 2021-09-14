@@ -2,6 +2,8 @@
 
 The simplest Load Balancer ever created.
 
+> Based on the example found [here](https://github.com/kasvith/simplelb).
+
 # How to use
 
 ```console
