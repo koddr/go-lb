@@ -20,7 +20,9 @@ build: clean test
 	CGO_ENABLED=0 go build -ldflags="-w -s" -o $(BUILD_DIR)/$(APP_NAME) main.go
 
 run: build
-	$(BUILD_DIR)/$(APP_NAME) --backends="http://127.0.0.1:5051,http://127.0.0.1:5052"
+	BACKENDS_LIST="http://127.0.0.1:5051,http://127.0.0.1:5052" \
+	LB_PORT=3030 \
+	$(BUILD_DIR)/$(APP_NAME)
 
 docker.run: docker.network docker.lb
 

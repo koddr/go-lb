@@ -1,4 +1,4 @@
-package serverpool
+package main
 
 import (
 	"log"
@@ -6,23 +6,16 @@ import (
 	"net/url"
 	"sync/atomic"
 	"time"
-
-	"github.com/koddr/go-lb/pkg/backend"
 )
 
 // ServerPool holds information about reachable backends
 type ServerPool struct {
-	backends []*backend.Server
+	backends []*Server
 	current  uint64
 }
 
-// NewServerPool
-func NewServerPool() *ServerPool {
-	return &ServerPool{}
-}
-
 // AddBackend to the server pool
-func (s *ServerPool) AddBackend(backend *backend.Server) {
+func (s *ServerPool) AddBackend(backend *Server) {
 	s.backends = append(s.backends, backend)
 }
 
@@ -42,7 +35,7 @@ func (s *ServerPool) MarkBackendStatus(backendUrl *url.URL, alive bool) {
 }
 
 // GetNextPeer returns next active peer to take a connection
-func (s *ServerPool) GetNextPeer() *backend.Server {
+func (s *ServerPool) GetNextPeer() *Server {
 	// loop entire backends to find out an Alive backend
 	next := s.NextIndex()
 	l := len(s.backends) + next // start from next and move a full cycle
